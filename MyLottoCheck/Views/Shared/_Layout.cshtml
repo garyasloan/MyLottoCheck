@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        @*<meta name="viewport" content="width=device-width, initial-scale=1.0">*@
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+        <title>@ViewBag.Title</title>
+
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/site")
+        @Styles.Render("~/Content/css")
+
+@if (Request["HTTP_HOST"].ToString().ToLower().Contains("mylottocheck"))
+{
+        <link rel="apple-touch-icon" href="@Url.Content("~/content/images/favicon.ico")" />
+        <link rel="shortcut icon" href="@Url.Content("~/content/images/favicon.ico")" />
+}
+    </head>
+    <body>
+        <div class="javascriptEnabled">
+            <div class="navbar navbar-fixed-top navbar-default">
+
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <div id="logo">
+                            <div id="logo-text">
+                                @Html.ActionLink("MyLottoCheck", "", "", new { area = "" }, new { @class = "navbar-brand" })
+                            </div>
+                            <div id="copyright">&copy;</div>
+                            <div id="year">@DateTime.Now.Year by Gary Sloan</div>
+                            <div id="ajax-spinner-container">
+                                <img id="ajax-spinner-image" src="~/content/images/ajax-loader.gif">
+                            </div>
+
+                            <div id="logo-container">
+                                <a href="~/">
+                                    <img id="logoImage" src="~/content/images/target.png" />
+                                    @*@if (Request["HTTP_HOST"].ToString().ToLower().Contains("mylottocheck"))
+                                    {
+                                        <img id="logoImage" src="~/content/images/target.png" />
+                                    }
+                                    else
+                                    {
+                                        <img id="logoImage" src="_blank" />
+                                    }*@
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="navbar-collapse collapse" id="containerTop">
+
+                        <ul class="nav navbar-nav">
+                            @*@if (User.Identity.IsAuthenticated)
+                            {*@
+                                @*<li>@Html.ActionLink("California Mega Millions", "Index", "Home", new { area = "CaliforniaMegaMillions" },null)</li>*@
+                                @*<li class="hidden-xs">@Html.ActionLink("OData Endpoint", "OdataEndpoint", "Home", new { area = "CaliforniaMegaMillions" }, null)</li>
+                                <li><a class="hidden-xs" href="#" id="elmah-log-link">Exception Log</a></li>*@
+
+
+                            @*}*@
+                        </ul>
+                        @Html.Partial("_LoginPartial")
+                        
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="container-fluid body-content bg-1">
+                @RenderBody()
+
+            </div>
+            <script>
+                $(".javascriptEnabled").show();
+                // These variables are used in mega-millions-entry-grid.js when performing ajax calls
+                var createAction = '@Url.Action("Create", "Home")';
+                var updateAction = '@Url.Action("Update", "Home")';
+                var deleteAction = '@Url.Action("Delete", "Home")';
+                var getWinningNumbersAction = '@Url.Content(@"~/CaliforniaMegaMillions/Home/GetWinningDraws")';
+                var getWinningNumbersActionAnonymous = '@Url.Content(@"~/CaliforniaMegaMillions/Home/GetWinningQuickDraws")';
+                var odataAction = '@Url.Content(@"~/odata/CaliforniaMegaMillionsWinningNumbers?$orderby=DrawNumber desc,IsMegaNumber")';
+                var elmahAction = '@Url.Content("~/Elmah/")';
+            </script>
+            @RenderSection("scripts", required: false)
+        </div>
+        <noscript class="field-validation-error">
+            <h2>
+                You need to enable Javascript in your browser to use MyLottoCheck.com.  Click
+                <a target="_blank" href="http://enable-javascript.com/">here</a> to find out how.
+            </h2>
+        </noscript>
+    </body>
+</html>

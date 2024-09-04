@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "OData V4 Endpoint";
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @Styles.Render("~/Content/grid")
+}
+
+<h3>California MEGA Millions v4 OData Endpoint</h3>
+<br />
+<div class="ODataOutput">
+    <span>Feel free to change the winning number data with your favorite HTTP tool using this fully functioning (CRUD) API.  Links will open in new tabs.</span>
+    <br /><br />
+    <span>Metadata Link:</span> <a target="_blank" href="@ViewBag.ODataEndpointMetaUrl">@ViewBag.ODataEndpointMetaUrl</a>
+    <br /><br />
+    <span>Sample Query:</span> <a target="_blank" href="@ViewBag.ODataEndpointUrl">@ViewBag.ODataEndpointUrl</a>
+    <br /><br />
+    <span>Sample Query Output:</span>
+    @Html.Raw(ViewBag.ODataEndpoint)
+</div>

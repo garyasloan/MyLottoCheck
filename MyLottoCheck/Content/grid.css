@@ -1,0 +1,490 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 20px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.pickedNumbersGridFooterWrapper {
+    height: 47px;
+}
+
+#header-wrapper {
+    margin-bottom: 0;
+    height: 20px;
+}
+
+.winning-picks-wrapper {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.wrapper {
+    margin-bottom: 20px;
+}
+
+#wrapper td {
+    vertical-align: middle;
+}
+
+.lotto-box {
+    display: inline-block;
+    max-width: 35px;
+    text-align: center;
+    width: 70px;
+    height: 34px;
+    padding: 2px 2px;
+    line-height: 1.428571429;
+    color: #555555;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.lotto-box-disabled {
+    display: inline-block;
+    max-width: 35px;
+    text-align: center;
+    width: 70px;
+    height: 34px;
+    padding: 2px 2px;
+    line-height: 1.428571429;
+    color: #555555;
+    background-color: #cccccc;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.lotto-text {
+    display: inline-block;
+    max-width: 35px;
+    text-align: center;
+    width: 70px;
+    height: 34px;
+    padding: 2px 2px;
+    line-height: 1.428571429;
+    font-size: 14px;
+    background-color: #f0f4f9;
+    border: none;
+}
+
+.lotto-box:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+/*Begin turn off number spinner control*/
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+/*End turn off number spinner control*/
+.input-validation-error {
+    border: 1px solid #f00
+}
+
+.input-validation-valid {
+    border: 1px solid #00cc04
+}
+
+.field-validation-valid {
+    display: none
+}
+
+.validation-summary-errors {
+    font-weight: normal;
+    color: #f00
+}
+
+.validation-summary-valid {
+    display: none
+}
+
+.highlighted {
+    background-color: #cdebae
+}
+
+.errorHighlighted {
+    background-color: #f88d7a
+}
+
+h4 {
+    color: navy
+}
+
+.javascriptEnabled {
+    display: none;
+}
+
+#pickedNumbersGridFooterWrapper td {
+    vertical-align: middle;
+}
+
+.pickedNumbersGridFooterWrapper {
+    height: 47px;
+    margin: 0;
+}
+
+#pickedNumbersGridFooterWrapper td {
+    vertical-align: middle;
+}
+
+table.add-pick-table td:not(:first-child):not(:last-child) {
+    text-align: center;
+}
+
+table.add-pick-table-noauth td {
+    text-align: center;
+}
+
+table [id^="numbers-table"] td {
+    text-align: center;
+}
+
+/*[id^="numbers-table"] td:first-child { text-align: left; }*/
+
+[id^="numbers-table"] td:last-child {
+    text-align: left;
+}
+
+/*[id^="numbers-table"] td:first-child { vertical-align: middle; }*/
+
+#add-pick-table th:not(:first-child) {
+    text-align: center;
+}
+
+#add-pick-table-noauth th {
+    text-align: center;
+}
+
+.winning-number {
+    font-size: larger;
+    color: green;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+.losing-number {
+    font-size: larger;
+    font-weight: 100;
+    color: #f00;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+#prize-amount {
+    text-align: right;
+}
+
+#draw:not(th) {
+    text-align: left;
+    padding-top: 25px;
+}
+
+#draw-number:not(th) {
+    padding-top: 25px;
+}
+
+#prize-amount-mobile {
+    color: green;
+    font-weight: 900;
+}
+
+#prize-amount:not(th) {
+    font-size: x-large;
+    text-align: right;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    color: green;
+    padding-top: 16px;
+}
+
+.disclaimer {
+    padding: 10px;
+    margin: 20px;
+    text-align: center;
+    color: #c71c22;
+    border-radius: 25px;
+    background: rgba(0, 0, 0, 0.075);
+    padding: 20px;
+}
+
+.lotto-box, .lotto-text {
+    font-size: larger;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+#add-row-label {
+    vertical-align: middle;
+}
+
+dt {
+    margin-bottom: 5px
+}
+
+.field-validation-error {
+    position: absolute;
+    width: 66px;
+    height: 30px;
+    padding: 0px;
+    background-color: red;
+    color: white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: #9a161a solid 1px;
+    padding-top: 3px;
+    font-size: 12px;
+}
+
+.error-anchor-top span:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 6px 6px 0;
+    border-color: red transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    bottom: -6px;
+    left: 12px;
+}
+
+.error-anchor-top span:before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 7px 7px 0;
+    border-color: red transparent;
+    display: block;
+    width: 0;
+    z-index: 0;
+    bottom: -8px;
+    left: 11px;
+}
+
+.error-anchor-bottom span:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 6px 6px;
+    border-color: red transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    top: -6px;
+    left: 12px;
+}
+
+.error-anchor-bottom span:before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 7px 7px;
+    border-color: red transparent;
+    display: block;
+    width: 0;
+    z-index: 0;
+    top: -8px;
+    left: 11px;
+}
+
+[id^='numbers-table'] {
+    margin-bottom: 2px
+}
+
+[id^='table-row'] {
+    height: 55px;
+}
+
+
+
+.navbar-brand {
+    padding-left: 47px;
+}
+
+.highlight-yellow {
+    background-color: lightyellow;
+}
+
+.highlight-pink {
+    background-color: lightpink;
+}
+
+.button-container {
+    width: 178px;
+}
+
+.center-content {
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.center-button {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+.align-right {
+    position: relative;
+    left: -4px
+}
+
+
+.button-edit {
+    width: 87px;
+}
+
+#button-clear {
+    width: 87px;
+}
+
+#button-add {
+    width: 87px;
+}
+
+.button-delete {
+    width: 87px;
+}
+
+.button-update {
+    width: 87px;
+    display: none;
+}
+
+.button-cancel {
+    width: 87px;
+    display: none;
+}
+
+#add-row-label {
+    min-width: 63px;
+}
+
+.numbers-row-row-label {
+    min-width: 63px;
+}
+
+/*td {
+     min-width: 56px;
+}*/
+
+hr.style2 {
+    border-top: 3px double black;
+    margin-bottom: 10px;
+    margin-top: 8px
+}
+
+#draws-heading th:not(#prize-amount):not(#draw) {
+    text-align: center;
+}
+
+#draws-heading td:not(#prize-amount):not(#draw) {
+    text-align: center;
+}
+
+#draws-heading.td {
+    width: 120px;
+}
+
+.phone-results-container {
+    width: 100%;
+    display: inline-block
+}
+
+.phone-pick {
+    width: 14.66%;
+    display: inline-block;
+    text-align: right;
+}
+
+[id^="numbers-table"] td {
+    text-align: center;
+}
+
+[id^="numbers-table"] {
+    margin-bottom: 0px;
+}
+
+    [id^="numbers-table"] input, button {
+        margin-top: 3px;
+    }
+
+#add-pick-table {
+    margin-top: 7px;
+    margin-bottom: 0px;
+}
+
+#add-pick-table-noauth {
+    margin-top: 7px;
+    margin-bottom: 0px;
+}
+
+#add-pick-table input, button {
+    margin-top: 4px;
+}
+
+#add-pick-table-noauth input, button {
+    margin-top: 4px;
+}
+
+/* put scroll bars on modal dialog */
+.modal-body {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.clone-form {
+    display: none;
+}
+
+#portrait-container {
+    display: none;
+}
+
+#landscape-container {
+    display: none;
+}
+
+.red {
+    color: purple;
+    display: inline-block;
+}
+
+table td {
+    border: none !important;
+}
+
+table th {
+    border: none !important;
+}
+

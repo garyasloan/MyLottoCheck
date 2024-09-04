@@ -1,0 +1,425 @@
+﻿@model IList<MyLottoCheck.Models.CaliforniaMegaMillionUserPick>
+
+@{
+    ViewBag.Title = "MyLottoCheck";
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @Styles.Render("~/Content/grid")
+}
+
+<div class="col-xs-12 col-md-12 col-lg-6 ">
+    <div class="center-content">
+        <h4 id="main-header">California Mega Millions</h4>
+        @*<h4 id="main-header">Your Picks</h4>*@
+    </div>
+
+    <div id="portrait-container">
+        
+                    <div class="center-content">
+                        See your winning draws below!
+                    </div>
+                    <div class="center-content">
+                        <div class="red" id="rotate-me">ROTATE</div> your device to edit your picks.
+                    </div>
+                </div>
+    <div class="row" id="landscape-container">
+        
+                <div class="center-content">
+                    Edit your picks below
+                </div>
+
+                <div id="add-pick-row">
+                    <form id="mega-millions-add-form" autocomplete="off" role="form">
+                        @Html.AntiForgeryToken()
+                        <table id="add-pick-table-noauth" class="table table-condensed add-pick-table-noauth">
+                            <thead class="thead-default">
+                                <tr>
+                                    @*<th></th>*@
+                                    <th>1st</th>
+                                    <th>2nd</th>
+                                    <th>3rd</th>
+                                    <th>4th</th>
+                                    <th>5th</th>
+                                    <th>Mega</th>
+                                    <th class="button-column-width">
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="add-row">
+                                    <td>
+                                        @Html.TextBox("first-pick-add", string.Empty, new
+                                   {
+                                       @type = "tel",
+                                       @class = "lotto-box",
+                                       @maxLength = "2",
+                                       data_val = "true",
+                                       data_val_required = "Required!",
+                                       data_val_range = "1-70!",
+                                       data_val_range_max = "70",
+                                       data_val_range_min = "1"
+                                   })
+                                        <div class="error-anchor-bottom">@Html.ValidationMessage("first-pick-add")</div>
+                                    <td>
+                                        @Html.TextBox("second-pick-add", string.Empty, new
+                                   {
+                                       @type = "tel",
+                                       @class = "lotto-box",
+                                       @maxLength = "2",
+                                       data_val = "true",
+                                       data_val_required = "Required!",
+                                       data_val_range = "1-70!",
+                                       data_val_range_max = "70",
+                                       data_val_range_min = "1"
+                                   })
+                                        <div class="error-anchor-top">@Html.ValidationMessage("second-pick-add")</div>
+                                    </td>
+                                    <td>
+                                        @Html.TextBox("third-pick-add", string.Empty, new
+                                   {
+                                       @type = "tel",
+                                       @class = "lotto-box",
+                                       @maxLength = "2",
+                                       data_val = "true",
+                                       data_val_required = "Required!",
+                                       data_val_range = "1-70!",
+                                       data_val_range_max = "70",
+                                       data_val_range_min = "1"
+                                   })
+                                        <div class="error-anchor-bottom">@Html.ValidationMessage("third-pick-add")</div>
+                                    </td>
+                                    <td>
+                                        @Html.TextBox("fourth-pick-add", string.Empty, new
+                                   {
+                                       @type = "tel",
+                                       @class = "lotto-box",
+                                       @maxLength = "2",
+                                       data_val = "true",
+                                       data_val_required = "Required!",
+                                       data_val_range = "1-70!",
+                                       data_val_range_max = "70",
+                                       data_val_range_min = "1"
+                                   })
+                                        <div class="error-anchor-top">@Html.ValidationMessage("fourth-pick-add")</div>
+                                    </td>
+                                    <td>
+                                        @Html.TextBox("fifth-pick-add", string.Empty, new
+                                   {
+                                       @type = "tel",
+                                       @class = "lotto-box",
+                                       @maxLength = "2",
+                                       data_val = "true",
+                                       data_val_required = "Required!",
+                                       data_val_range = "1-70!",
+                                       data_val_range_max = "70",
+                                       data_val_range_min = "1"
+                                   })
+                                        <div class="error-anchor-bottom">@Html.ValidationMessage("fifth-pick-add")</div>
+                                    </td>
+                                    <td>
+                                        @Html.TextBox("mega-pick-add", string.Empty, new
+                                   {
+                                       @type = "tel",
+                                       @class = "lotto-box",
+                                       @maxLength = "2",
+                                       data_val = "true",
+                                       data_val_required = "Required!",
+                                       data_val_range = "1-25!",
+                                       data_val_range_max = "25",
+                                       data_val_range_min = "1"
+                                   })
+                                        <div class="error-anchor-top">@Html.ValidationMessage("mega-pick-add")</div>
+                                    </td>
+                                    <td>
+                                        <div class="button-container">
+                                            <button id="button-add" class="width-35 btn btn-primary">
+                                                @*<i class="ace-icon fa fa-plus-square-o"></i>*@
+                                                <span class="bigger-110">Save</span>
+                                            </button>
+
+                                            <button id="button-clear" class="width-35 btn btn-default">
+                                                @*<i class="ace-icon fa fa-square-o"></i>*@
+                                                <span class="bigger-110">Clear</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                <div class="wrapper">
+                    <div class="clone-form">
+                        @*form to use as a clone base for newly created picks*@
+                        <form id="mega-millions-form" autocomplete="off" role="form">
+                            @Html.AntiForgeryToken()
+                            <table id="numbers-table" class="table table-condensed">
+                                <tr id="table-row">
+                                    <td>
+                                        <input class="lotto-text"
+                                               id="first-pick"
+                                               maxlength="2"
+                                               data-val="true"
+                                               data-val-range="1-70"
+                                               data-val-range-max="70"
+                                               data-val-range-min="1"
+                                               data-val-required="Required"
+                                               name="FirstPick"
+                                               type="tel"
+                                               value="" />
+                                        <div class="error-anchor-bottom">@Html.ValidationMessage("FirstPick")</div>
+                                    </td>
+                                    <td>
+                                        <input class="lotto-text second-pick"
+                                               id="second-pick"
+                                               maxlength="2"
+                                               data-val="true"
+                                               data-val-range="1-70"
+                                               data-val-range-max="70"
+                                               data-val-range-min="1"
+                                               data-val-required="Required"
+                                               name="second-pick"
+                                               type="tel"
+                                               value="" />
+                                        <div class="error-anchor-top">@Html.ValidationMessage("second-pick")</div>
+
+                                    </td>
+                                    <td>
+                                        <input class="lotto-text third-pick"
+                                               id="third-pick"
+                                               maxlength="2"
+                                               data-val="true"
+                                               data-val-range="1-70"
+                                               data-val-range-max="70"
+                                               data-val-range-min="1"
+                                               data-val-required="Required"
+                                               name="third-pick"
+                                               type="tel"
+                                               value="" />
+                                        <div class="error-anchor-bottom">@Html.ValidationMessage("third-pick")</div>
+                                    </td>
+                                    <td>
+                                        <input class="lotto-text fourth-pick"
+                                               id="fourth-pick"
+                                               maxlength="2"
+                                               data-val="true"
+                                               data-val-range="1-70"
+                                               data-val-range-max="70"
+                                               data-val-range-min="1"
+                                               data-val-required="Required"
+                                               name="fourth-pick"
+                                               type="tel"
+                                               value="" />
+                                        <div class="error-anchor-top">@Html.ValidationMessage("fourth-pick")</div>
+                                    </td>
+                                    <td>
+                                        <input class="lotto-text fifth-pick"
+                                               id="fifth-pick"
+                                               maxlength="2"
+                                               data-val="true"
+                                               data-val-range="1-70"
+                                               data-val-range-max="70"
+                                               data-val-range-min="1"
+                                               data-val-required="Required"
+                                               name="fifth-pick"
+                                               type="tel"
+                                               value="" />
+                                        <div class="error-anchor-bottom">@Html.ValidationMessage("fifth-pick")</div>
+                                    </td>
+                                    <td>
+                                        <input class="lotto-text mega-pick"
+                                               id="mega-pick"
+                                               maxlength="2"
+                                               data-val="true"
+                                               data-val-range="1-25"
+                                               data-val-range-max="25"
+                                               data-val-range-min="1"
+                                               data-val-required="Required"
+                                               name="mega-pick"
+                                               type="tel"
+                                               value="" />
+                                        <div class="error-anchor-top">@Html.ValidationMessage("mega-pick")</div>
+                                    </td>
+                                    <td>
+                                        <div class="button-container">
+                                            <button class="button-edit btn btn-default" data-id="0">
+                                                @*<i class="ace-icon fa fa-edit"></i>*@
+                                                <span class="bigger-110">Edit</span>
+                                            </button>
+
+                                            <button class="button-delete btn btn-danger" data-id="0">
+                                                @*<i class="ace-icon fa fa-trash"></i>*@
+                                                <span class="bigger-110">Delete</span>
+                                            </button>
+
+                                            <button class="button-update btn btn-primary" data-id="0">
+                                                @*<i class="ace-icon fa fa-arrow-circle-o-up"></i>*@
+                                                <span class="bigger-110">Save</span>
+                                            </button>
+
+                                            <button class="button-cancel btn btn-default" data-id="0">
+                                                @*<i class="ace-icon fa fa-times"></i>*@
+                                                <span class="bigger-110">Cancel</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    @{var i = 1; }
+                    @foreach (var item in Model)
+                    {
+                        <form id="mega-millions-form@(+i)" autocomplete="off" role="form">
+                            @Html.AntiForgeryToken()
+                            <table id="numbers-table@(i)" class="table table-condensed">
+                                <tr id="table-row@(i)">
+                                    <td>
+                                        <input class="lotto-text"
+                                               maxlength="2"
+                                               data-val="true"
+                                               data-val-range="1-70"
+                                               data-val-range-max="70"
+                                               data-val-range-min="1"
+                                               data-val-required="Required"
+                                               name="FirstPick@(i)"
+                                               type="tel"
+                                               value="@item.FirstPick" />
+                                        <div class="error-anchor-bottom">@Html.ValidationMessage("FirstPick" + i)</div>
+                                    </td>
+
+                                    <td>
+                                        <input class="lotto-text second-pick"
+                                               maxlength="2"
+                                               data-val="true"
+                                               data-val-range="1-70"
+                                               data-val-range-max="70"
+                                               data-val-range-min="1"
+                                               data-val-required="Required"
+                                               name="second-pick@(i)"
+                                               type="tel"
+                                               value="@item.SecondPick" />
+                                        <div class="error-anchor-top">@Html.ValidationMessage("second-pick" + i)</div>
+                                    </td>
+                                    <td>
+                                        <input class="lotto-text third-pick"
+                                               maxlength="2"
+                                               data-val="true"
+                                               data-val-range="1-70"
+                                               data-val-range-max="70"
+                                               data-val-range-min="1"
+                                               data-val-required="Required"
+                                               name="third-pick@(i)"
+                                               type="tel"
+                                               value="@item.ThirdPick" />
+                                        <div class="error-anchor-bottom">@Html.ValidationMessage("third-pick" + i)</div>
+                                    </td>
+                                    <td>
+                                        <input class="lotto-text fourth-pick"
+                                               maxlength="2"
+                                               data-val="true"
+                                               data-val-range="1-70"
+                                               data-val-range-max="70"
+                                               data-val-range-min="1"
+                                               data-val-required="Required"
+                                               name="fourth-pick@(i)"
+                                               type="tel"
+                                               value="@item.FourthPick" />
+                                        <div class="error-anchor-top">@Html.ValidationMessage("fourth-pick" + i)</div>
+                                    </td>
+                                    <td>
+                                        <input class="lotto-text fifth-pick"
+                                               maxlength="2"
+                                               data-val="true"
+                                               data-val-range="1-70"
+                                               data-val-range-max="70"
+                                               data-val-range-min="1"
+                                               data-val-required="Required"
+                                               name="fifth-pick@(i)"
+                                               type="tel"
+                                               value="@item.FifthPick" />
+                                        <div class="error-anchor-bottom">@Html.ValidationMessage("fifth-pick" + i)</div>
+                                    </td>
+                                    <td>
+                                        <input class="lotto-text mega-pick"
+                                               maxlength="2"
+                                               data-val="true"
+                                               data-val-range="1-25"
+                                               data-val-range-max="25"
+                                               data-val-range-min="1"
+                                               data-val-required="Required"
+                                               name="mega-pick@(i)"
+                                               type="tel"
+                                               value="@item.MegaPick" />
+                                        <div class="error-anchor-top">@Html.ValidationMessage("mega-pick" + i)</div>
+                                    </td>
+                                    <td>
+                                        <div class="button-container">
+                                            <button class="button-edit btn btn-default" data-id="@item.Id">
+                                                @*<i class="ace-icon fa fa-edit"></i>*@
+                                                <span class="bigger-110">Edit</span>
+                                            </button>
+
+                                            <button class="button-delete btn btn-danger" data-id="@item.Id">
+                                                @*<i class="ace-icon fa fa-trash"></i>*@
+                                                <span class="bigger-110">Delete</span>
+                                            </button>
+
+                                            <button class="button-update btn btn-primary" data-id="@item.Id">
+                                                @*<i class="ace-icon fa fa-arrow-circle-o-up"></i>*@
+                                                <span class="bigger-110">Save</span>
+                                            </button>
+
+                                            <button class="button-cancel btn btn-default" data-id="@item.Id">
+                                                @*<i class="ace-icon fa fa-times"></i>*@
+                                                <span class="bigger-110">Cancel</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                        i++;
+                    }
+                    <div id="form-insert-marker"></div>
+                </div>
+            
+        
+    </div>
+</div>
+
+
+
+        <div class="col-xs-12 col-lg-6">
+            <div id="winning-draws"></div>
+        </div>
+    
+
+@section scripts {
+    <script>
+        var userAuthorized = @User.Identity.IsAuthenticated.ToString().ToLower();
+        var checkType = '@System.Web.HttpContext.Current.Session["CheckType"].ToString()';
+        var indexActionSet = '@Url.Action("Index", "Home", new { checkType = "set" })';
+        var indexActionQuick = '@Url.Action("Index", "Home", new { checkType = "quick" })';
+
+        var userAgreementUrl = '@Url.Content(@"~/content/user-agreement.html")';
+        var userAgreementFlagAction = '@Url.Action("SetUserAgreementFlag", "Home", new { checkType = "quick" })';
+        var userAgreementMessage = "";
+
+        
+
+        @*@if (HttpContext.Current.Session["HasUserAgreementBeenSeen"] == null) {
+                @:var userAgreementMessage = "Using this website confirms you agree to the <a id=user-agreement-link style='color:navy; text-decoration: underline;'</a>user agreement.";
+
+                    }
+        else
+        {
+            HttpContext.Current.Session["HasUserAgreementBeenSeen"] = "yes";
+        }*@
+    </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/megamillionsentrygrid")
+}

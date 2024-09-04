@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "Content/site.css",
+    "inputFiles": [
+      "Content/site.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/mega-millions-entry-grid.js",
+    "inputFiles": [
+      "Scripts/mega-millions-entry-grid.js"
+    ]
+  }
+]

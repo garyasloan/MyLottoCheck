@@ -250,6 +250,7 @@
     <Compile Include="Areas\CaliforniaMegaMillions\Models\CaliforniaMegaMillionUserPick.cs" />
     <Compile Include="Areas\CaliforniaMegaMillions\Models\CaliforniaMegaMillionsAllWinningNumberAndPrize.cs" />
     <Compile Include="Areas\CaliforniaMegaMillions\Models\CaliforniaMegaMillionsUserWinningNumberAndPrize.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Areas\CaliforniaMegaMillions\ViewModels\CaliforniaMegaMillionsUserPickViewModel.cs" />

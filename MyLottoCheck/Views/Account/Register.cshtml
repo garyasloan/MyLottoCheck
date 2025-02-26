@@ -1,0 +1,90 @@
+﻿@using MyLottoCheck.Models
+@model RegisterViewModel
+@{
+    ViewBag.Title = "MyLottoCheck";
+}
+
+<head>
+    @{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+</head>
+<body>
+
+    @using (Html.BeginForm("Register", "Account", new { area = "" }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <div class="login-container">
+                    <div class="space-6"></div>
+                    <div class="position-relative">
+                        <div id="login-box" class="login-box visible widget-box no-border">
+                            <div class="widget-body">
+                                <div class="widget-main">
+                                    <h4 class="header green lighter bigger">
+                                        <i class="ace-icon fa fa-users blue"></i>
+                                        Register
+                                    </h4>
+
+                                    <div class="space-6"></div>
+                                    
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    
+                                    <fieldset>
+                                        <label class="block clearfix">
+                                            <span class="block input-icon input-icon-left">
+                                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                                <i class="ace-icon fa fa-envelope"></i>
+                                            </span>
+                                        </label>
+                                        <label class="block clearfix">
+                                            <span class="block input-icon input-icon-left">
+                                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                                <i class="ace-icon fa fa-lock"></i>
+                                            </span>
+                                        </label>
+                                        <label class="block clearfix">
+                                            <span class="block input-icon input-icon-left">
+                                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm password" })
+                                                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                                                <i class="ace-icon fa fa-retweet"></i>
+                                            </span>
+                                        </label>
+                                        <label class="block">
+                                            @Html.CheckBoxFor(m => m.UserAgreementConfirmed)
+                                            <span class="lbl">
+                                                I accept the
+                                                <a id="terms">User Agreement</a>
+                                            </span>
+                                        </label>
+                                        <div>@Html.ValidationMessageFor(x => x.UserAgreementConfirmed, "", new { @class = "text-danger" })</div>
+                                        
+                                        <div id="content-area"></div>
+
+                                        <div class="space-24"></div>
+
+                                        <div class="clearfix">
+                                            <button type="submit" class="width-65 pull-right btn btn-sm btn-primary">
+                                                <span class="bigger-110">Register</span>
+                                            </button>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</body>
+@Scripts.Render("~/bundles/site")
+@Scripts.Render("~/bundles/login")
+<script>
+        // this variable is used in site.js to get the user agreement text
+        var userAgreementUrl = '@Url.Content(@"~/content/user-agreement.html")';
+</script>

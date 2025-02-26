@@ -1,0 +1,300 @@
+﻿@model IEnumerable<MyLottoCheck.Models.CaliforniaMegaMillionsUserWinningNumberAndPrize>
+
+<div class="hidden-xs winning-picks-wrapper">
+    <div class="center-content">
+        <h4 id="main-header">Your Winning Draws</h4>
+    </div>
+    <div class="center-content">
+        Results updated: @ViewBag.LatestUpdateDate (PST)
+    </div>
+    @if (Model.Count() != 0)
+    {
+        <table class="table " id="draws-heading">
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.DrawNumber)
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.FirstPick)*@
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.SecondPick)*@
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.ThirdPick)*@
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.FourthPick)*@
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.FifthPick)*@
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.MegaPick)*@
+                </th>
+                <th id="prize-amount">
+                    @Html.DisplayNameFor(model => model.PrizeAmount)
+                </th>
+                <th id="draw">
+                    @Html.DisplayNameFor(model => model.DrawDate)
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td id="draw-number">
+                @Html.DisplayFor(modelItem => item.DrawNumber)
+            </td>
+
+
+            <td>
+                <span class="@(item.MatchedNumber1 == 1 ? "winning-number" : "losing-number")">
+                    <section class="number-checker__result-line">
+                        <div data-test-id="game-result-line-" aria-label="Game line" class="result-line ">
+                            <div data-test-id="results-line-numbers-primary-" aria-label="Primary numbers of the game line" class="result-line__board">
+                                <span class="@(item.MatchedNumber1 == 1 ? "grid-ball grid-ball-megamillions-secondary grid-ball--megamillions-secondary--matched grid-ball--megamillions-secondary--checked" : "grid-ball grid-ball-megamillions-primary grid-ball--megamillions-primary--unmatched")">
+                                    @Html.DisplayFor(modelItem => item.FirstPick)
+                                </span>
+                            </div>
+                        </div>
+                    </section>
+                </span>
+            </td>
+
+            <td>
+                <span class="@(item.MatchedNumber2 == 1 ? "winning-number" : "losing-number")">
+                    <section class="number-checker__result-line">
+                        <div data-test-id="game-result-line-" aria-label="Game line" class="result-line ">
+                            <div data-test-id="results-line-numbers-primary-" aria-label="Primary numbers of the game line" class="result-line__board">
+                                <span class="@(item.MatchedNumber2 == 1 ? "grid-ball grid-ball-megamillions-secondary grid-ball--megamillions-secondary--matched grid-ball--megamillions-secondary--checked" : "grid-ball grid-ball-megamillions-primary grid-ball--megamillions-primary--unmatched")">
+                                    @Html.DisplayFor(modelItem => item.SecondPick)
+                                </span>
+                            </div>
+                        </div>
+                    </section>
+                </span>
+            </td>
+
+            <td>
+                <span class="@(item.MatchedNumber3 == 1 ? "winning-number" : "losing-number")">
+                    <section class="number-checker__result-line">
+                        <div data-test-id="game-result-line-" aria-label="Game line" class="result-line ">
+                            <div data-test-id="results-line-numbers-primary-" aria-label="Primary numbers of the game line" class="result-line__board">
+                                <span class="@(item.MatchedNumber3 == 1 ? "grid-ball grid-ball-megamillions-secondary grid-ball--megamillions-secondary--matched grid-ball--megamillions-secondary--checked" : "grid-ball grid-ball-megamillions-primary grid-ball--megamillions-primary--unmatched")">
+                                    @Html.DisplayFor(modelItem => item.ThirdPick)
+                                </span>
+                            </div>
+                        </div>
+                    </section>
+                </span>
+            </td>
+
+
+            <td>
+                <span class="@(item.MatchedNumber4 == 1 ? "winning-number" : "losing-number")">
+                    <section class="number-checker__result-line">
+                        <div data-test-id="game-result-line-" aria-label="Game line" class="result-line ">
+                            <div data-test-id="results-line-numbers-primary-" aria-label="Primary numbers of the game line" class="result-line__board">
+                                <span class="@(item.MatchedNumber4 == 1 ? "grid-ball grid-ball-megamillions-secondary grid-ball--megamillions-secondary--matched grid-ball--megamillions-secondary--checked" : "grid-ball grid-ball-megamillions-primary grid-ball--megamillions-primary--unmatched")">
+                                    @Html.DisplayFor(modelItem => item.FourthPick)
+                                </span>
+                            </div>
+                        </div>
+                    </section>
+                </span>
+            </td>
+
+            <td>
+                <span class="@(item.MatchedNumber5 == 1 ? "winning-number" : "losing-number")">
+                    <section class="number-checker__result-line">
+                        <div data-test-id="game-result-line-" aria-label="Game line" class="result-line ">
+                            <div data-test-id="results-line-numbers-primary-" aria-label="Primary numbers of the game line" class="result-line__board">
+                                <span class="@(item.MatchedNumber5 == 1 ? "grid-ball grid-ball-megamillions-secondary grid-ball--megamillions-secondary--matched grid-ball--megamillions-secondary--checked" : "grid-ball grid-ball-megamillions-primary grid-ball--megamillions-primary--unmatched")">
+                                    @Html.DisplayFor(modelItem => item.FifthPick)
+                                </span>
+                            </div>
+                        </div>
+                    </section>
+                </span>
+            </td>
+
+            <td>
+                <span class="@(item.MatchedNumberMega == 1 ? "winning-number" : "losing-number")">
+                    <section class="number-checker__result-line">
+                        <div data-test-id="game-result-line-" aria-label="Game line" class="result-line ">
+                            <div data-test-id="results-line-numbers-primary-" aria-label="Primary numbers of the game line" class="result-line__board">
+
+                                <span class="@(item.MatchedNumberMega == 10 ? "grid-ball grid-ball-megamillions-primary grid-ball--megamillions-primary--matched grid-ball--megamillions-primary--checked" : "grid-ball grid-ball-megamillions-primary grid-ball--megamillions-primary--unmatched")">
+                                    @Html.DisplayFor(modelItem => item.MegaPick)
+                                </span>
+                            </div>
+                        </div>
+                    </section>
+                </span>
+            </td>
+            <td id="prize-amount">
+                @Html.DisplayFor(modelItem => item.PrizeAmount)
+
+            </td>
+
+            <td id="draw">
+                @Html.DisplayFor(modelItem => item.DrawDate)
+            </td>
+
+
+        </tr>
+            }
+        </table>
+    }
+    else
+    {
+        @*<p>You have no winning draws.</p>*@
+    }
+</div>
+
+<div class="visible-xs">
+
+    @*<h4>Mega Millions Picks</h4>*@
+
+    @if (!Model.Any())
+    {
+        @*<p>You have no winning draws.</p>*@
+        @*<p>You have no winning picks. Go to MyLottoCheck.com on a tablet, laptop or desktop computer, to add/edit your picks.</p>*@
+    }
+    else
+    {
+        @*<p>See your winning picks below!  If you need to add/edit your picks please go to MyLottoCheck.com on a tablet, laptop or desktop computer.</p>*@
+        <div class="center-content">
+            <h4 id="main-header">Your Winning Draws</h4>
+        </div>
+
+
+        <div class="center-content">
+            Results updated:<br />
+            @ViewBag.LatestUpdateDate (PST)
+        </div>
+
+    }
+
+    <div id="phone-winning-draws">
+        @foreach (var item in Model)
+        {
+            <hr class="style2">
+            <dl>
+                <dt id="prize-amount-mobile">
+                    @Html.DisplayNameFor(model => model.PrizeAmount): @Html.DisplayFor(model => item.PrizeAmount)
+                </dt>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DrawNumber): @Html.DisplayFor(model => item.DrawNumber)
+                </dt>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DrawDate): @Html.DisplayFor(model => item.DrawDate)
+                </dt>
+
+            </dl>
+
+            <div class="phone-results-container">
+                @*<div class="phone-pick">
+                    @Html.DisplayNameFor(model => model.FirstPick)
+                </div>
+                <div class="phone-pick">
+                    @Html.DisplayNameFor(model => model.SecondPick)
+                </div>
+                <div class="phone-pick">
+                    @Html.DisplayNameFor(model => model.ThirdPick)
+                </div>
+                <div class="phone-pick">
+                    @Html.DisplayNameFor(model => model.FourthPick)
+                </div>
+                <div class="phone-pick">
+                    @Html.DisplayNameFor(model => model.FifthPick)
+                </div>
+                <div class="phone-pick">
+                    @Html.DisplayNameFor(model => model.MegaPick)
+                </div>
+                <br />*@
+                <div class="phone-pick">
+                    <span class="@(item.MatchedNumber1 == 1 ? "winning-number" : "losing-number")">
+                        <section class="number-checker__result-line">
+                            <div data-test-id="game-result-line-" aria-label="Game line" class="result-line ">
+                                <div data-test-id="results-line-numbers-primary-" aria-label="Primary numbers of the game line" class="result-line__board">
+                                    <span class="@(item.MatchedNumber1 == 1 ? "grid-ball grid-ball-megamillions-secondary grid-ball--megamillions-secondary--matched grid-ball--megamillions-secondary--checked" : "grid-ball grid-ball-megamillions-primary grid-ball--megamillions-primary--unmatched")">
+                                        @Html.DisplayFor(modelItem => item.FirstPick)
+                                    </span>
+                                </div>
+                            </div>
+                        </section>
+                    </span>                </div>
+                <div class="phone-pick">
+                    <span class="@(item.MatchedNumber2 == 1 ? "winning-number" : "losing-number")">
+                        <section class="number-checker__result-line">
+                            <div data-test-id="game-result-line-" aria-label="Game line" class="result-line ">
+                                <div data-test-id="results-line-numbers-primary-" aria-label="Primary numbers of the game line" class="result-line__board">
+                                    <span class="@(item.MatchedNumber2 == 1 ? "grid-ball grid-ball-megamillions-secondary grid-ball--megamillions-secondary--matched grid-ball--megamillions-secondary--checked" : "grid-ball grid-ball-megamillions-primary grid-ball--megamillions-primary--unmatched")">
+                                        @Html.DisplayFor(modelItem => item.SecondPick)
+                                    </span>
+                                </div>
+                            </div>
+                        </section>
+                    </span>
+                </div>
+                <div class="phone-pick">
+                    <span class="@(item.MatchedNumber3 == 1 ? "winning-number" : "losing-number")">
+                        <section class="number-checker__result-line">
+                            <div data-test-id="game-result-line-" aria-label="Game line" class="result-line ">
+                                <div data-test-id="results-line-numbers-primary-" aria-label="Primary numbers of the game line" class="result-line__board">
+                                    <span class="@(item.MatchedNumber3 == 1 ? "grid-ball grid-ball-megamillions-secondary grid-ball--megamillions-secondary--matched grid-ball--megamillions-secondary--checked" : "grid-ball grid-ball-megamillions-primary grid-ball--megamillions-primary--unmatched")">
+                                        @Html.DisplayFor(modelItem => item.ThirdPick)
+                                    </span>
+                                </div>
+                            </div>
+                        </section>
+                    </span>                </div>
+                <div class="phone-pick">
+                    <span class="@(item.MatchedNumber4 == 1 ? "winning-number" : "losing-number")">
+                        <section class="number-checker__result-line">
+                            <div data-test-id="game-result-line-" aria-label="Game line" class="result-line ">
+                                <div data-test-id="results-line-numbers-primary-" aria-label="Primary numbers of the game line" class="result-line__board">
+                                    <span class="@(item.MatchedNumber4 == 1 ? "grid-ball grid-ball-megamillions-secondary grid-ball--megamillions-secondary--matched grid-ball--megamillions-secondary--checked" : "grid-ball grid-ball-megamillions-primary grid-ball--megamillions-primary--unmatched")">
+                                        @Html.DisplayFor(modelItem => item.FourthPick)
+                                    </span>
+                                </div>
+                            </div>
+                        </section>
+                    </span>                </div>
+                <div class="phone-pick">
+                    <span class="@(item.MatchedNumber5 == 1 ? "winning-number" : "losing-number")">
+                        <section class="number-checker__result-line">
+                            <div data-test-id="game-result-line-" aria-label="Game line" class="result-line ">
+                                <div data-test-id="results-line-numbers-primary-" aria-label="Primary numbers of the game line" class="result-line__board">
+                                    <span class="@(item.MatchedNumber5 == 1 ? "grid-ball grid-ball-megamillions-secondary grid-ball--megamillions-secondary--matched grid-ball--megamillions-secondary--checked" : "grid-ball grid-ball-megamillions-primary grid-ball--megamillions-primary--unmatched")">
+                                        @Html.DisplayFor(modelItem => item.FifthPick)
+                                    </span>
+                                </div>
+                            </div>
+                        </section>
+                    </span>                </div>
+                <div class="phone-pick">
+                    <span class="@(item.MatchedNumberMega == 1 ? "winning-number" : "losing-number")">
+                        <section class="number-checker__result-line">
+                            <div data-test-id="game-result-line-" aria-label="Game line" class="result-line ">
+                                <div data-test-id="results-line-numbers-primary-" aria-label="Primary numbers of the game line" class="result-line__board">
+
+                                    <span class="@(item.MatchedNumberMega == 10 ? "grid-ball grid-ball-megamillions-primary grid-ball--megamillions-primary--matched grid-ball--megamillions-primary--checked" : "grid-ball grid-ball-megamillions-primary grid-ball--megamillions-primary--unmatched")">
+                                        @Html.DisplayFor(modelItem => item.MegaPick)
+                                    </span>
+                                </div>
+                            </div>
+                        </section>
+                    </span>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

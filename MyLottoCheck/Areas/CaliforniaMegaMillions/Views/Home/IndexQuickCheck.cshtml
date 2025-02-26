@@ -1,0 +1,168 @@
+﻿@model IList<MyLottoCheck.Models.CaliforniaMegaMillionUserPick>
+
+@{
+    ViewBag.Title = "MyLottoCheck";
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @Styles.Render("~/Content/grid")
+}
+
+<div class="row align-right">
+    <div class="col-xs-12 col-md-12 col-lg-6 ">
+
+        <div class="center-content">
+            <h4 id="main-header">California Mega Millions</h4>
+            <h4 id="main-header">Quick Check Screen</h4>
+        </div>
+
+        <div class="center-content">
+                Enter the numbers you would like to check in the boxes below or 
+                <button id="btn-saved-picks" type="button" class="btn-link" style="margin:0px; border:0px; padding:0px">click here</button>
+                to go to your 'Saved Picks' screen
+        </div>
+
+        <div id="add-pick-row">
+            <form id="mega-millions-add-form" autocomplete="off" role="form">
+                @Html.AntiForgeryToken()
+                <table id="add-pick-table-noauth" class="table table-condensed add-pick-table-noauth">
+                    <thead class="thead-default">
+                        <tr>
+                            <th>1st</th>
+                            <th>2nd</th>
+                            <th>3rd</th>
+                            <th>4th</th>
+                            <th>5th</th>
+                            <th>Mega</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="add-row">
+                            <td>
+                                @Html.TextBox("first-pick-add", string.Empty, new
+                               {
+                                   @type = "tel",
+                                   @class = "lotto-box",
+                                   @maxLength = "2",
+                                   data_val = "true",
+                                   data_val_required = "Required",
+                                   data_val_range = "1-70",
+                                   data_val_range_max = "70",
+                                   data_val_range_min = "1"
+                               })
+                                <div class="error-anchor-bottom">@Html.ValidationMessage("first-pick-add")</div>
+                            </td>
+                            <td>
+                                @Html.TextBox("second-pick-add", string.Empty, new
+                               {
+                                   @type = "tel",
+                                   @class = "lotto-box",
+                                   @maxLength = "2",
+                                   data_val = "true",
+                                   data_val_required = "Required",
+                                   data_val_range = "1-70",
+                                   data_val_range_max = "70",
+                                   data_val_range_min = "1"
+                               })
+                                <div class="error-anchor-top">@Html.ValidationMessage("second-pick-add")</div>
+                            </td>
+                            <td>
+                                @Html.TextBox("third-pick-add", string.Empty, new
+                               {
+                                   @type = "tel",
+                                   @class = "lotto-box",
+                                   @maxLength = "2",
+                                   data_val = "true",
+                                   data_val_required = "Required",
+                                   data_val_range = "1-70",
+                                   data_val_range_max = "70",
+                                   data_val_range_min = "1"
+                               })
+                                <div class="error-anchor-bottom">@Html.ValidationMessage("third-pick-add")</div>
+                            </td>
+                            <td>
+                                @Html.TextBox("fourth-pick-add", string.Empty, new
+                               {
+                                   @type = "tel",
+                                   @class = "lotto-box",
+                                   @maxLength = "2",
+                                   data_val = "true",
+                                   data_val_required = "Required",
+                                   data_val_range = "1-70",
+                                   data_val_range_max = "70",
+                                   data_val_range_min = "1"
+                               })
+                                <div class="error-anchor-top">@Html.ValidationMessage("fourth-pick-add")</div>
+                            </td>
+                            <td>
+                                @Html.TextBox("fifth-pick-add", string.Empty, new
+                               {
+                                   @type = "tel",
+                                   @class = "lotto-box",
+                                   @maxLength = "2",
+                                   data_val = "true",
+                                   data_val_required = "Required",
+                                   data_val_range = "1-70",
+                                   data_val_range_max = "70",
+                                   data_val_range_min = "1"
+                               })
+                                <div class="error-anchor-bottom">@Html.ValidationMessage("fifth-pick-add")</div>
+                            </td>
+                            <td>
+                                @Html.TextBox("mega-pick-add", string.Empty, new
+                               {
+                                   @type = "tel",
+                                   @class = "lotto-box",
+                                   @maxLength = "2",
+                                   data_val = "true",
+                                   data_val_required = "Required",
+                                   data_val_range = "1-25",
+                                   data_val_range_max = "25",
+                                   data_val_range_min = "1"
+                               })
+                                <div class="error-anchor-top">@Html.ValidationMessage("mega-pick-add")</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="center-button">
+                    <button id="button-add" class="width-15 btn btn-primary">
+                        @*<i class="ace-icon fa fa-check"></i>*@
+                        <span class="bigger-110">Check</span>
+                    </button>
+                    <button id="button-clear" class="width-15 btn btn-default">
+                        @*<i class="ace-icon fa fa-square-o"></i>*@
+                        <span class="bigger-110">Clear</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-xs-12 col-lg-6">
+        <div id="winning-draws"></div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        var userAuthorized = @User.Identity.IsAuthenticated.ToString().ToLower();
+        var checkType = '@System.Web.HttpContext.Current.Session["CheckType"].ToString()';
+        var indexActionSet = '@Url.Action("Index", "Home", new { checkType = "set" })';
+        var indexActionQuick = '@Url.Action("Index", "Home", new { checkType = "quick" })';
+
+        var userAgreementUrl = '@Url.Content(@"~/content/user-agreement.html")';
+        var userAgreementFlagAction = '@Url.Action("SetUserAgreementFlag", "Home", new { checkType = "quick" })';
+        var userAgreementMessage = "";
+
+        @*@if (HttpContext.Current.Session["HasUserAgreementBeenSeen"] == null) {
+                @:var userAgreementMessage = "Using this website confirms you agree to the <a id=user-agreement-link style='color:navy; text-decoration: underline;'</a>user agreement.";
+                            }
+        else
+        {
+            HttpContext.Current.Session["HasUserAgreementBeenSeen"] = "yes";
+        }*@
+    </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/megamillionsentrygrid")
+}

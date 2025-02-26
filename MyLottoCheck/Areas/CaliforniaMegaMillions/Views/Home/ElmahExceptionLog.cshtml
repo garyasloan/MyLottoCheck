@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Elmah Exception Log";
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @Styles.Render("~/Content/grid")
+}
+
+<h2>Elmah Exception Log</h2>
+
+<div>
+    @Html.Raw(ViewBag.ElmahContent)
+</div>
+

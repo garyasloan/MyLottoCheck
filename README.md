@@ -7,4 +7,4 @@ This repository contains code for the MyLottoCheck.com website that allows you t
 
 ### Who do I talk to? ###
 
-garysloan@mail.com
+garysloan@techie-mail.com
